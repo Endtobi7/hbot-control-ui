@@ -1,4 +1,4 @@
-import { RobotPosition, RobotStatus, DrawingPath, RobotConfig } from '@types/robot';
+import { RobotPosition, DrawingPath } from '../types/robot';
 
 class RobotService {
   private ws: WebSocket | null = null;
@@ -69,6 +69,13 @@ class RobotService {
     });
   }
 
+  moveRelative(dx: number, dy: number, dz: number, speed: number): void {
+    this.send({
+      command: 'move_relative',
+      data: { dx, dy, dz, speed },
+    });
+  }
+
   executeDrawing(path: DrawingPath): void {
     this.send({
       command: 'draw',
@@ -95,7 +102,13 @@ class RobotService {
     });
   }
 
-  private send(data: any): void {
+  calibrate(): void {
+    this.send({
+      command: 'calibrate',
+    });
+  }
+
+  private send(data: unknown): void {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       this.ws.send(JSON.stringify(data));
     } else {
@@ -114,7 +127,7 @@ class RobotService {
     this.listeners.get(event)?.delete(callback);
   }
 
-  private emit(event: string, data?: any): void {
+  private emit(event: string, data?: unknown): void {
     this.listeners.get(event)?.forEach(callback => callback(data));
   }
 
@@ -123,4 +136,5 @@ class RobotService {
   }
 }
 
-export default new RobotService();
+const robotServiceInstance = new RobotService();
+export default robotServiceInstance;
