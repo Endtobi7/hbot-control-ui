@@ -1,0 +1,2 @@
+# HBot Control UI
+This is the project documentation for the HBot Control UI, built using TypeScript and Tailwind CSS. The app features dark mode support, customizable styles, and an interactive interface for controlling robots.

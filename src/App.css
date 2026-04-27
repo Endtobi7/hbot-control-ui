@@ -1,0 +1,10 @@
+.App {
+    text-align: center;
+    background-color: #1a1a1a;
+}
+
+/* Component-specific styles */
+.button {
+    background-color: #ef4444;
+    color: white;
+}
