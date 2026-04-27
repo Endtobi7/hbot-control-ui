@@ -1,0 +1,1 @@
+{\n  "name": "hbot-control-ui",\n  "version": "1.0.0",\n  "main": "index.js",\n  "scripts": {\n    "start": "node index.js",\n    "build": "tsc"\n  },\n  "dependencies": {},\n  "devDependencies": {\n    "typescript": "^4.0.0",\n    "tailwindcss": "^2.0.0"\n  }\n}
